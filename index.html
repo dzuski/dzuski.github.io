@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<title>Дзуськи!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+html,body{margin:0;padding:0}
+html{background-color: #f1f2f4}
+main{text-align:center}
+.dzuski{display:inline-block;position:relative;max-width: 100%}
+.dzuski *{max-width: 100%}
+.img{width:456px;height: 552px}
+img{position:relative;height:auto}
+img.animated{animation: fade-in 1.2s}
+img.loading{opacity:0.01}
+svg{position:absolute;left:0;bottom:0;width:100%}
+@keyframes fade-in {
+  0% { opacity: 0.01; }
+  100% { opacity: 1; }
+}
+.b{background-color:#0f0f0f}
+.ifr {width:100%;position:absolute;left:0;top:0;bottom:0;display:flex}
+.ifr iframe{width:100%;height:calc(100vw/16*9);margin:auto}
+</style>
+<meta name="description" content="Дзуськи!" />
+</head>
+<body>
+<main>
+  <div id="f" class="ifr"></div>
+  <div class="dzuski">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 456 82">
+      <filter id='blur'>
+        <feGaussianBlur stdDeviation='3' result='offset-blur' />
+      </filter>
+      <g filter="url(#blur)">
+        <ellipse cx="234" cy="56" rx="120" ry="6" fill="#dadbdd" />
+      </g>
+    </svg>
+    <div class="img">
+      <img src="dzuski.jpg" alt="Дзуськи!" width="456px" height="552px" id="i" />
+    </div>
+  </div>
+</main>
+<script>
+if(!i.complete){
+  i.className = 'loading'
+  i.onload = function () {
+    i.className = 'animated'
+  }
+}
+
+var ifr = document.createElement('iframe')
+ifr.frameBorder = 0
+f.appendChild(ifr)
+i.onclick = function () {
+ifr.width = 560
+ifr.height = 315
+ifr.title = 'Рускій воєнний корабль, іді нах*й! УКРАЇНА – непереможна країна!'
+ifr.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+ifr.allowFullscreen = true
+if (!ifr.src) {
+  ifr.src = 'https://www.youtube-nocookie.com/embed/ZQvQkQP77g0?controls=0&autoplay=1'
+  document.getElementsByTagName('main')[0].appendChild(f)
+  f.className = 'ifr b'
+}
+};
+</script>
+</body>
+</html>
